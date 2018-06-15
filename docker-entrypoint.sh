@@ -10,6 +10,9 @@ fi
 if [ "$1" = 'smartmetd' ]; then
     id
     whoami
+    #systemctl start redis
+    /usr/bin/fmi/radon2smartmet /etc/grid-tools-conf/radon-to-smartmet.cfg 0 &
+    redis-server &
     exec /usr/sbin/smartmetd
 fi
 

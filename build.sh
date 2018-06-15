@@ -1,3 +1,3 @@
 #!/bin/sh
 
-docker build --rm -t smartmetserver .
+docker build --rm -t smartmetserver-grid .
