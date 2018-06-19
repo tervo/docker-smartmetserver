@@ -62,7 +62,8 @@ RUN mkdir -p /var/smartmet/timeseriescache /var/smartmet/imagecache /var/smartme
 ADD grid-tools-conf /etc/grid-tools-conf
 
 ### Containers should NOT run as root as a good practice
-USER 101010
+#USER 101010
+RUN mkdir -p /cores
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["smartmetd"]

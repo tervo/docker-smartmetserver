@@ -10,9 +10,14 @@ fi
 if [ "$1" = 'smartmetd' ]; then
     id
     whoami
+    mkdir -p /cores
+    echo '/cores/core.%h.%e.%t' > /proc/sys/kernel/core_pattern
+    ulimit -c unlimited
+
     #systemctl start redis
-    /usr/bin/fmi/radon2smartmet /etc/grid-tools-conf/radon-to-smartmet.cfg 0 &
     redis-server &
+    #/usr/bin/fmi/radon2smartmet /etc/grid-tools-conf/radon-to-smartmet.cfg 0 &
+    /usr/bin/fmi/filesys2smartmet /etc/grid-tools-conf/filesys-to-smartmet.cfg 0 &
     exec /usr/sbin/smartmetd
 fi
 
